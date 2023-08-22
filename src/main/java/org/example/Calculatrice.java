@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,7 @@ public class Calculatrice extends JFrame {
     private JLabel ecran = new JLabel();
     private Dimension dim = new Dimension(50, 40);
     private Dimension dim2 = new Dimension(50, 31);
-    private Dimension dim3 = new Dimension(500, 800);
+    //private Dimension dim3 = new Dimension(500, 800);
     private double chiffre1;
     private boolean clicOperateur = false, update = false;
     private String operateur = "";
@@ -34,7 +35,7 @@ public class Calculatrice extends JFrame {
         initComposant();
         //On ajoute le conteneur
         this.setContentPane(container);
-        container.setPreferredSize(new Dimension(dim3));
+        //container.setPreferredSize(new Dimension(dim3));
         //container.setBackground(Color.BLACK);
         this.setVisible(true);
     }
@@ -45,10 +46,9 @@ public class Calculatrice extends JFrame {
         ecran = new JLabel("0");
         ecran.setFont(police);
         ecran.setForeground(Color.WHITE);
-       // ecran.setBorder();
+        // ecran.setBorder();
         //On aligne les informations à droite dans le JLabel
         ecran.setHorizontalAlignment(JLabel.RIGHT);
-        //ecran.setVerticalAlignment(JLabel.SOUTH_EAST);
         ecran.setPreferredSize(new Dimension(220, 20));
         JPanel operateur = new JPanel();
         operateur.setPreferredSize(new Dimension(55, 185));
@@ -57,7 +57,7 @@ public class Calculatrice extends JFrame {
         chiffre.setPreferredSize(new Dimension(165, 185));
         chiffre.setBackground(Color.BLACK);
         JPanel panEcran = new JPanel();
-        panEcran.setPreferredSize(new Dimension(220, 30));
+        panEcran.setPreferredSize(new Dimension(225, 30));
         panEcran.setBackground(Color.BLACK);
 
         //On parcourt le tableau initialisé
@@ -65,8 +65,10 @@ public class Calculatrice extends JFrame {
         for(int i = 0; i < tab_string.length; i++){
             tab_button[i] = new JButton(tab_string[i]);
             tab_button[i].setPreferredSize(dim);
-            Border RaisedBevelBorder = BorderFactory.createRaisedBevelBorder();
-            tab_button[i].setBorder(RaisedBevelBorder);
+            Border RaisedLevelBorder = BorderFactory.createRaisedBevelBorder();
+            tab_button[i].setBorder(RaisedLevelBorder);
+            tab_button[i].setBackground(Color.darkGray);
+            tab_button[i].setForeground(Color.WHITE);
             switch(i){
                 //Pour chaque élément situé à la fin du tableau
                 //et qui n'est pas un chiffre
@@ -111,7 +113,7 @@ public class Calculatrice extends JFrame {
             }
         }
         panEcran.add(ecran);
-        panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
+        panEcran.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         container.add(panEcran, BorderLayout.NORTH);
         container.add(chiffre, BorderLayout.CENTER);
         container.add(operateur, BorderLayout.EAST);

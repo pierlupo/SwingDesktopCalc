@@ -9,7 +9,7 @@ public class Main {
             public void run() {
 
                 JFrame jFrame = new JFrame("Calculatrice");
-                jFrame.setSize(300, 700);
+                jFrame.setSize(300, 400);
                 jFrame.setContentPane(new Calculatrice().getContainer());
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 jFrame.setVisible(true);
